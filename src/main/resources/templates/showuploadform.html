@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+        <title>Hello world page</title>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/css_slider.css" rel="stylesheet">
+         <link href="../css/shards.min.css" rel="stylesheet">
+         <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/dropzone.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+    <div th:insert="fragments/default.html :: header"> </div>
+
+   <div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-agile">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h4 class="b-w3ltxt text-capitalize mt-md-4"><span>Upload Image</span></h4>
+		                                </div>
+                                        <br>
+										 <form  action="#" method="post" 
+                                       th:action="@{'/livestockimage/' + ${livestock.getId()}}" class="dropzone" id="my-awesome-dropzone">
+                                </form>
+									</div>
+							</li>
+						</ul>
+						
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+     
+               
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/dropzone.js"></script>
+ <script src="j../js/query.stateLga.js"></script>
+ <script src="../js/jquery.ucfirst.js"></script>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5cec274ba667a0210d59ae62/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

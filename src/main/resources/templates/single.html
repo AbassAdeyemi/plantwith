@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Hello world page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+       <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+    </head>
+    <body>
+    <div th:insert="fragments/default.html :: header"> </div>
+    
+    <section class="blog py-5">
+	<div class="container py-md-3">
+		<h2 class="heading text-center mt-3 mb-sm-5 mb-4" th:text="${livestock.name}"></h2>
+		<a th:href="@{/bookcrop/{id}(id=${livestock.id})}"><button class="btn btn-primary">Book Package</button></a>
+		<div class="row blog-grids head">
+			<div class="col-lg-7 mb-lg-5 blog-img1">
+				<img src="images/livestockhen1.jpg" alt="" class="img-fluid"/>
+				<a href="/">Home</a>
+			</div>
+			<div class="col-lg-5 mb-lg-5 mb-4">
+				<h5>March 3, 2019.</h5>
+				<h4 class="my-3"></h4>
+				<p class="my-3" th:text=${livestock.description}>
+                </p>
+			</div>
+			  
+			
+		</div>
+	</div>
+</section>
+    
+    
+    <div th:insert="fragments/default.html :: appointment"> </div>
+	<!-- footer -->
+	<div th:insert="fragments/default.html :: footer"></div>
+	<!-- //footer -->
+
+	<div th:insert="fragments/default.html :: copyright"></div>
+	<div th:insert="fragments/default.html :: moveTop"></div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org">
+    <head>
+    <body>
+        
+       <header th:fragment="header" class="py-3 mb-4">
+       <div class="container">
+			<div id="logo">
+				<h1> <a href="/"><span class="fa fa-crop" aria-hidden="true"></span>Green Collar</a></h1>
+			</div>
+		<!-- nav -->
+		<nav class="d-lg-flex">
+
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu mt-2 ml-auto">
+				<li class="active"><a href="/">Home</a></li>
+				<li class=""><a href="/about">About Us</a></li>
+				<li class=""><a href="/crops">Crops</a></li>
+				<li sec:authorize="isAuthenticated()" class=""><a href="/profile">Profile</a></li>
+			</ul>
+			<div sec:authorize="isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/logout">Log Out</a>
+			</div>
+			<div sec:authorize="!isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/login">Start Farming</a>
+			</div>
+            <div sec:authorize="!isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/login">Login</a>
+			</div>
+			<div sec:authorize="isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/manageuser">Manage Users</a>
+			</div>
+			<div sec:authorize="isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/managelivestock">Manage Livestocks</a>
+			</div>
+
+			<div sec:authorize="!isAuthenticated()" class="login-icon ml-2">
+				<a class="user" href="/register">Register</a>
+			</div>
+		</nav>
+		<div class="clear"></div>
+		<!-- //nav -->
+	</div>
+	</header>
+    
+     <div th:fragment="content">
+       
+    </div>
+    
+    <!-- appointment -->
+<section class="appointment text-center py-5" th:fragment="appointment">
+	<div class="container py-sm-3">
+		<h4>make your dream a reality</h4>
+		<a href="/register">Join Us Now</a>
+	</div>
+</section>
+<!-- //appointment -->
+    	<section id="footer" th:fragment="footer">
+    	<footer class="py-3">
+		<div class="container py-sm-3">
+		<div class="row footer-grids">
+			<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+				<h4 class="mb-sm-4 mb-3"><span class="fa fa-crop"></span> Green Collar</h4>
+				<p class="mb-3">Why go through the stress when we can go through it for you</p>
+				<h5>Trusted by <span>500+ People</span> </h5>
+			</div>
+			<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+				<h4 class="mb-sm-4 mb-3">Address Info</h4>
+				<p><span class="fa mr-2 fa-map-marker"></span>64d Allen Avenue <span>Ikeja, Lagos.</span></p>
+				<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +1(12) 123 456 789 </p>
+				<p><span class="fa mr-2 fa-envelope"></span><a href="mailto:info@example.com">info@example.com</a></p>
+			</div>
+			<div class="col-lg-2 col-sm-6 mb-sm-0 mb-4">
+				<h4 class="mb-sm-4 mb-3">Quick Links</h4>
+				<ul>
+					<li><a href="#">Terms & Conditions</a></li>
+					<li class="my-2"><a href="#">Support Helpline</a></li>
+					<li><a href="#">Farming Tips</a></li>
+					<li class="mt-2"><a href="#">Privacy Ploicy</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<h4 class="mb-sm-4 mb-3">Subscribe Us</h4>
+				<p class="mb-3">Subscribe to our newsletter</p>
+				<form action="#" method="post" class="d-flex">
+					<input type="email" id="email" name="EMAIL" placeholder="Enter your email here" required>
+					<button type="submit" class="btn">Subscribe</button>
+				</form>
+				<div class="icon-social mt-3">
+					<a href="#" class="button-footr">
+						<span class="fa mx-2 fa-facebook"></span>
+					</a>
+					<a href="#" class="button-footr">
+						<span class="fa mx-2 fa-twitter"></span>
+					</a>
+					<a href="#" class="button-footr">
+						<span class="fa mx-2 fa-dribbble"></span>
+					</a>
+					<a href="#" class="button-footr">
+						<span class="fa mx-2 fa-pinterest"></span>
+					</a>
+					<a href="#" class="button-footr">
+						<span class="fa mx-2 fa-google-plus"></span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+	</section>
+	
+	<section  id="copyright" th:fragment="copyright">
+	<!-- copyright -->
+<div class="copyright">
+	<div class="container py-4">
+		<div class=" text-center">
+			<p>© 2019 Green Collar. All Rights Reserved </p>
+		</div>
+	</div>
+</div>
+<!-- //copyright -->
+	</section>
+	
+	<section th:fragment="moveTop">
+	<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+</section>
+    </body>
+</html>

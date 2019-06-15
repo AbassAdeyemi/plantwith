@@ -1,0 +1,127 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Green Collar</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+<head>
+    <!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+        <title></title>
+    
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/css_slider.css" rel="stylesheet">
+         <link href="../css/shards.min.css" rel="stylesheet">
+         <link href="../css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+    </head>
+<body>
+
+	<!-- top header -->
+
+	<!-- //top header -->
+
+	<!-- //header -->
+	<div th:insert="fragments/default.html :: header"></div>
+	<!-- //header -->
+
+	<!-- banner -->
+	<div class="banner" id="home">
+		<div class="layer">
+			<div class="container">
+				<div class="banner-text-agile">
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<!-- banner slider-->
+							<div class="csslider infinity" id="slider1">
+								<input type="radio" name="slides" checked="checked"
+									id="slides_1" />
+								<ul class="banner_slide_bg">
+									<li>
+										<div class="container-fluid">
+											<div class="w3ls_banner_txt">
+												<h4 class="b-w3ltxt text-capitalize mt-md-4">
+													<span>Login</span>
+													</h4>
+													 <br> <br>
+													
+														<div th:if ="${param.error != null }" class="login-error">Incorrect username or
+															password</div>
+									
+
+													<form action="#" class="form-group" th:action="@{/login}"
+														method="post">
+														<label>Username:</label>
+														<p>
+															<input type="text" name="username" class="form-control" />
+														</p>
+														<label>Password:</label>
+														<p>
+															<input type="password" name="password" class="form-control" />
+														</p>
+														<button type="submit" class="btn btn-success">Sign In</button>
+													</form>
+													<p>
+														Not Registered? <a href="/register">Register</a>
+													</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+							</div>
+							<!-- //banner slider-->
+
+						</div>
+						<div class="col-lg-6 col-md-8">
+							<img src="images/farm.jpg" alt="" class="img-fluid" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+
+
+   <div th:insert="fragments/default.html :: appointment"> </div>
+	<!-- footer -->
+	<div th:insert="fragments/default.html :: footer"></div>
+	<!-- //footer -->
+
+	<div th:insert="fragments/default.html :: copyright"></div>
+	<div th:insert="fragments/default.html :: moveTop"></div>
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5cec274ba667a0210d59ae62/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>

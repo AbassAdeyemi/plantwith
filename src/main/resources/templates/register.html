@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+        <title>Hello world page</title>
+        <style type="text/css">
+        .field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+        </style>
+    
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/css_slider.css" rel="stylesheet">
+         <link href="../css/shards.min.css" rel="stylesheet">
+         <link href="../css/style.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+    <div th:insert="fragments/default.html :: header"> </div>
+
+                 <!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-agile">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h4 class="b-w3ltxt text-capitalize mt-md-4"><span>Register</span></h4>
+		                                </div>
+                                        <br>
+										<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                                        <label>First Name:</label><p>
+                                        <input type="text" class="form-control" th:field="*{firstname}"/>
+                                        <span class="login-error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+                                        </p>
+                                        <label>Last Name:</label><p>
+                                        <input type="text" class="form-control" th:field="*{lastname}"/>
+                                        <span class="login-error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+                                        </p>
+                                         <label>Email:</label><p>
+                                        <input type="text" class="form-control" th:field="*{email}"/>
+                                        <span class="login-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                                        </p>
+                                         <label>Phone:</label><p>
+                                        <input type="text" class="form-control" th:field="*{phonenumber}"/>
+                                        <span class="login-error" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></span>
+                                        </p>
+                                         <label>Password:</label><p>
+                                        <input type="password" class="form-control" id="password-field"
+                                        th:field="*{plainPassword}"/><span><i class="fa fa-fw fa-eye field-icon" aria-hidden="true" id="pass-status" onClick="viewPassword()"></i></span>
+                                        </p>
+                                         <label>Address:</label><p>
+                                        <input type="text" class="form-control" th:field="*{address}">
+                                        <span class="login-error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                                        </p>
+                                         <label>State:</label><p>
+                                        <select  class="form-control"  id="states" th:field="*{state}">
+                                        </select>
+                                        <span class="login-error" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></span>
+                                        </p>
+                                         <label>LGA:</label><p>
+                                        <select   class="form-control"  id="lgas" th:field="*{lga}"></select>
+                                        <span class="login-error" th:if="${#fields.hasErrors('lga')}" th:errors="*{lga}"></span>
+                                        </p>
+                                        <button type="submit" class="btn btn-success">Sign up</button>
+                                        </form>
+                                    <p> Already Registered? <a href="/login">Login</a></p>
+									</div>
+							</li>
+						</ul>
+						
+					</div>
+					<!-- //banner slider-->
+
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<img src="images/farm.jpg" alt="" class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+               
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+ <script src="../js/jquery.stateLga.js"></script>
+ <script src="../js/jquery.ucfirst.js"></script>
+    
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5cec274ba667a0210d59ae62/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+var option = '';
+var states=$.nigeria.states();
+for (var i=0;i<states.length;i++){
+   option += '<option value="'+ states[i] + '">' + $.ucfirst(states[i]) + '</option>';
+}
+
+$('#states').append(option).on('change',function() {
+var option = '';
+option += '<option value="">Local government</option>';
+var lgas=eval('$.nigeria.'+this.value);
+for (var i=0;i<lgas.length;i++){
+   option += '<option value="'+ lgas[i] + '">' + $.ucfirst(lgas[i]) + '</option>';
+}
+$('#lgas').find('option')
+    .remove()
+    .end().append(option);
+}).trigger('change');
+
+function viewPassword(){
+var passwordInput = document.getElementById('password-field');
+var passStatus = document.getElementById('pass-status');
+
+if (passwordInput.type == 'password')
+{
+  passwordInput.type='text';
+  passStatus.className='fa fa-eye-slash';
+}
+else
+{
+  passwordInput.type='password';
+  passStatus.className='fa fa-eye';
+}
+}
+
+</script>
+
+</body>
+</html>

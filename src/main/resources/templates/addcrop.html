@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+        <title>Hello world page</title>
+        
+    
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/css_slider.css" rel="stylesheet">
+         <link href="../css/shards.min.css" rel="stylesheet">
+         <link href="../css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+    <div th:insert="fragments/default.html :: header"> </div>
+
+                 <!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-agile">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h4 class="b-w3ltxt text-capitalize mt-md-4"><span>Add Crop</span></h4>
+		                                </div>
+                                        <br>
+										<form action="#" th:action="@{/addcrop}" th:object="${crop}" method="post">
+                                        <label> Name:</label><p>
+                                        <input type="text" class="form-control" th:field="*{name}" />
+                                        </p>
+                                        <label>Cost Of Pesticicde:</label><p>
+                                        <input type="text" class="form-control" th:field="*{costOfPesticide}" placeholder="NGN"/>
+                                        </p>
+                                         <label>Cost Of Herbicide:</label><p>
+                                        <input type="text" class="form-control" th:field="*{costOfHerbicide}" placeholder="NGN"/>
+                                        </p>
+                                         <label>Cost Of Land Preparation:</label><p>
+                                        <input type="text" class="form-control" th:field="*{costOfLandPreparation}" placeholder="NGN"/>
+                                        </p>
+                                         <label>Cost Of Fertilizer:</label><p>
+                                        <input type="text" class="form-control" th:field="*{costOfFertilizer}" placeholder="NGN"/>
+                                        </p>
+                                        <label>First Pay:</label><p>
+                                        <input type="text" class="form-control" th:field="*{firstPay}" placeholder="NGN"/>
+                                        </p>
+                                        <label>Second Pay:</label><p>
+                                        <input type="text" class="form-control" th:field="*{secondPay}" placeholder="NGN"/>
+                                        </p>
+                                        <label>Third Pay:</label><p>
+                                        <input type="text" class="form-control" th:field="*{thirdPay}" placeholder="NGN"/>
+                                        </p>
+                                         <label>Description:</label><p>
+                                        <textarea class="form-control" th:field="*{description}"></textarea>
+                                        </p>
+                                        
+                                        <div class=mt-2>
+                                        <button type="submit" class="btn btn-success">Add</button>
+                                        </div>
+                                        </form>
+									</div>
+							</li>
+						</ul>
+						
+					</div>
+					<!-- //banner slider-->
+
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<img src="images/farm.jpg" alt="" class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+               
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5cec274ba667a0210d59ae62/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

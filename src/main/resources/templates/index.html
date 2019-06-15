@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+        <title>Green Collar</title>
+    
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="../css/style.css" rel="stylesheet">
+         <link href="../css/css_slider.css" rel="stylesheet">
+         <link href="../css/shards.min.css" rel="stylesheet">
+         <link href="../css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    <div th:insert="fragments/default.html :: header" > </div>
+    
+   <div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-agile">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<input type="radio" name="slides" id="slides_2" />
+						<input type="radio" name="slides" id="slides_3" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Quality crop</span> harvest.</h3>
+										<p class="w3ls_pvt-title my-3">You can trust our farming experts to ensure you have
+                                        quality harvest at the end of your farming season.</p>
+										<a href="/about" class="btn btn-danger my-sm-3 mb-3">Read More</a>
+								
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>We will monitor your</span> farm</h3>
+										<p class="w3ls_pvt-title my-3">With the help of our qualified and certified professionals, 
+                                        we will ensure your farm is monitored and supervised to ensure quality farm produce.</p>
+										<a href="/about" class="btn btn-danger my-sm-3 mb-3">Read More</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Professionally Trained</span> Farming Staff.</h3>
+										<p class="w3ls_pvt-title my-3">We have a team of experts who have been professionally trained
+                                        in fertilizer application, agricultural engineering, and so on.</p>
+										<a href="/about" class="btn btn-danger my-sm-3 mb-3">Read More</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="navigation">
+							<div>
+								<label for="slides_1"></label>
+								<label for="slides_2"></label>
+								<label for="slides_3"></label>
+							</div>
+						</div>
+					</div>
+					<!-- //banner slider-->
+
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<img src="images/farm.jpg" alt="" class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+      
+       <!-- services -->
+<section class="py-5 team-w3ls" id="best">
+		<div class="container py-xl-5 py-lg-3">
+			<h3 class="title-w3 pt-sm-5 mb-5 text-wh font-weight-bold">Crops You Can Grow</h3>
+			<div class="d-flex team-w3ls-row pt-xl-5 pt-md-3">
+				<div class="col-lg-4 col-sm-6">
+                <a href="/livestocks/chicken">
+					<div class="box20">
+						<img src="images/livestockhen1.jpg" alt="" class="img-fluid" />
+						<div class="box-content">
+							<h3 class="title">Hen</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+				<div class="col-lg-4 col-sm-6 my-sm-0 my-4">
+                <a href="/livestocks/turkey">
+					<div class="box20 active">
+						<img src="images/livestockturkey1.jpg" alt="" class="img-fluid" />
+						<div class="box-content active">
+							<h3 class="title">Turkey</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+				<div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-4 mx-auto">
+                <a href="/crops/maize">
+					<div class="box20">
+						<img src="images/maizeplantwith.jpg" alt="" class="img-fluid" />
+						<div class="box-content">
+							<h3 class="title">Maize</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+			</div>
+			<div class="d-flex team-w3ls-row pt-lg-5 mt-lg-0 mt-4">
+				<div class="col-lg-4 col-sm-6">
+                <a href="#">
+					<div class="box20">
+						<img src="images/d4.jpg" alt="" class="img-fluid" />
+						<div class="box-content">
+							<h3 class="title">Apples</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+				<div class="col-lg-4 col-sm-6 mt-sm-0 mt-4">
+                <a href="#">
+					<div class="box20">
+						<img src="images/d3.jpg" alt="" class="img-fluid" />
+						<div class="box-content">
+							<h3 class="title">Grapes</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+				<div class="col-lg-4 col-sm-6 mt-lg-0 mt-4 mx-auto">
+                <a href="#">
+					<div class="box20">
+						<img src="images/d2.jpg" alt="" class="img-fluid" />
+						<div class="box-content">
+							<h3 class="title">Carrots</h3>
+						</div>
+					</div>
+                    </a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="feedback" id="testimonials">
+	<div class="feedback-layer py-5">
+		<div class="container py-lg-5">
+		<h3 class="heading text-center mb-sm-5 mb-4">Testimonials</h3>
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="images/ser1.jpg" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="images/ser2.jpg" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="images/ser3.jpg" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+	<!-- //best food  -->
+	<div class="sharethis-inline-share-buttons"></div>
+	  <div th:insert="fragments/default.html :: appointment"> </div>
+       <div th:insert="fragments/default.html :: footer"> </div> 
+        <div th:insert="fragments/default.html :: copyright"> </div> 
+         <div th:insert="fragments/default.html :: moveTop"> </div> 
+         <script src=“//platform-api.sharethis.com/js/sharethis.js#property=5cf29e4dd75d0900122bb9c8&product=inline-share-buttons”></script>
+          <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5cec274ba667a0210d59ae62/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+    </body>
+</html>
