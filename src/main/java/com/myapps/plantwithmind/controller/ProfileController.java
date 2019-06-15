@@ -67,7 +67,6 @@ public class ProfileController {
 		if(livestock == null){
 			livestock = new Livestock(anylivestock);
 			livestockService.save(livestock);
-			livestock = new Livestock(anylivestock);
 		}
 		}
 		else if(livestockService.findLivestockByUser(user) != null){
@@ -80,33 +79,6 @@ public class ProfileController {
 		model.addAttribute("livestock",livestock);
 		return anylivestock;
 	}
-	@GetMapping(value="/admin")
-	public String adminPage(Model model){
-			SiteUser user = getUser();
-			
-			if(user == null) {
-				return "redirect:/";
-			}
-			
-			Profile profile = profileService.getUserProfile(user);
-
-			if (profile == null) {
-				profile = new Profile();
-				profile.setUser(user);
-				profileService.save(profile);
-			}
-			List<SiteUser> iteratedUser = (List)userService.findAll();
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+iteratedUser.size());
-			model.addAttribute("email", user.getEmail());
-			model.addAttribute("userId", user.getId());
-			model.addAttribute("phonenumber", user.getPhonenumber());
-			model.addAttribute("firstname", user.getFirstname());
-			model.addAttribute("lastname", user.getLastname());
-			model.addAttribute("initial", user.getFirstname().toUpperCase().charAt(0));
-			model.addAttribute("numofusers", iteratedUser.size());
-		return "admindash";
-	}
-	
 	
 	@PatchMapping(value="/search")
 	public ModelAndView search(@RequestParam String cropName){
@@ -176,6 +148,7 @@ public class ProfileController {
 		    }
 		List<SiteUser> iteratedUser = (List)userService.findAll();
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+iteratedUser.size());
+		model.addAttribute("email", user.getEmail());
 		model.addAttribute("user",user);
 		model.addAttribute("duepay",duepay);
 		model.addAttribute("livestock",livestock);

@@ -68,21 +68,21 @@ public class HomeController {
 		return "cropmanage";
 	}
 	
-	@GetMapping("/crops/{anycrop}")
-	public String showCrop(@PathVariable String anycrop,Model model){
-		System.out.println(">>>>>>>>>>>>>>>>"+anycrop);
-		Crop crop = cropService.findCropByName(anycrop);
-		if(crop == null){
-			crop = new Crop(anycrop);
-			cropService.save(crop);
-		}
-		crop.setFirstPay("100000");
-		crop.setSecondPay("100000");
-		crop.setThirdPay("100000");
-		cropService.save(crop);
-		model.addAttribute("crop",crop);
-		return anycrop;
-	}
+//	@GetMapping("/crops/{anycrop}")
+//	public String showCrop(@PathVariable String anycrop,Model model){
+//		System.out.println(">>>>>>>>>>>>>>>>"+anycrop);
+//		Crop crop = cropService.findCropByName(anycrop);
+//		if(crop == null){
+//			crop = new Crop(anycrop);
+//			cropService.save(crop);
+//		}
+//		crop.setFirstPay("100000");
+//		crop.setSecondPay("100000");
+//		crop.setThirdPay("100000");
+//		cropService.save(crop);
+//		model.addAttribute("crop",crop);
+//		return anycrop;
+//	}
 	
 	@GetMapping("/crops")
 	public String showCrops(){

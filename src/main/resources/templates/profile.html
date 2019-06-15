@@ -18,9 +18,6 @@ xmlns:th="http://www.thymeleaf.org">
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <link href="../css/style.css" rel="stylesheet">
-       <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../js/main.js"></script>
 
 <!-- css files -->
 <link href="css/css_slider.css" type="text/css" rel="stylesheet"
@@ -81,7 +78,7 @@ xmlns:th="http://www.thymeleaf.org">
                                 <tbody>
                                     <tr>
                                         <td class="font-weight-bold">Signed in as:</td>
-                                        <td class=""><span class="float-right" th:text=${user.email}></span></td>
+                                        <td class=""><span class="float-right" th:text=${email}></span></td>
                                     </tr>
                                    
                                     <tr>
@@ -170,7 +167,8 @@ xmlns:th="http://www.thymeleaf.org">
     <td th:text="${duepay.amount}" />
     <td><form >
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <button type="button" onclick="payWithPaystack()"> Pay </button> 
+  <button type="button" id="hey" class="btnPayNow" data-email="${user.email}" data-mobile="${user.phonenumber}" data-amount="${duepay.amount}"
+   onclick="payWithPaystack()"> Pay </button> 
 </form>
     </td>
     </tr>
@@ -187,7 +185,13 @@ xmlns:th="http://www.thymeleaf.org">
         <div th:insert="fragments/default.html :: copyright"> </div> 
          <div th:insert="fragments/default.html :: moveTop"> </div> 
          
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
          <script type="text/javascript">
+         
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -197,16 +201,15 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
-</script>
 
-<script>
+//var data-email = [[${email}]];
   function payWithPaystack(){
+	  //alert(data-email);
     var handler = PaystackPop.setup({
-      key: 'pk_test_86d32aa1nV4l1da7120ce530f0b221c3cb97cbcc',
-      email: 'customer@email.com',
-      amount: 10000,
+      key: 'pk_test_3ff500ca3f03fe6b46b53d7a279a56e78264b766',
+      email: 'abassadeyemi1@gmail.com',
+      amount: 1000,
       currency: "NGN",
-      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
       metadata: {
          custom_fields: [
             {
