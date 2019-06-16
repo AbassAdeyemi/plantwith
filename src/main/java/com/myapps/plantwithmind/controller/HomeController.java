@@ -110,7 +110,7 @@ public class HomeController {
 		}
 		userService.register(user);
 		model.addAttribute("user", user);
-		return "index";
+		return "login";
 	}
 	
 	

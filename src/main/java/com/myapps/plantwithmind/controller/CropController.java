@@ -39,28 +39,30 @@ public class CropController {
 	@Autowired
 	private ImageService imageService;
 	
-	@PostMapping("/addcrop")
-	public String addCrop(@ModelAttribute Crop crop, 
-	  Model model) {
-
-        Crop othercrop = new Crop();
-	    othercrop.setName(crop.getName());
-	    othercrop.setCostOfHerbicide(crop.getCostOfHerbicide());
-	    othercrop.setCostOfPesticide(crop.getCostOfPesticide());
-	    othercrop.setCostOfLandPreparation(crop.getCostOfLandPreparation());
-	    othercrop.setCostOfFertilizer(crop.getCostOfFertilizer());
-	    othercrop.setDescription(crop.getDescription());
-	    model.addAttribute("crops", cropService.findAllCrops());
-	    return "cropmanage";
-	}
+//	@PostMapping("/addcrop")
+//	public String addCrop(@ModelAttribute Crop crop, 
+//	  Model model) {
+//
+//        Crop othercrop = new Crop();
+//	    othercrop.setName(crop.getName());
+//	    othercrop.setCostOfHerbicide(crop.getCostOfHerbicide());
+//	    othercrop.setCostOfPesticide(crop.getCostOfPesticide());
+//	    othercrop.setCostOfLandPreparation(crop.getCostOfLandPreparation());
+//	    othercrop.setCostOfFertilizer(crop.getCostOfFertilizer());
+//	    othercrop.setDescription(crop.getDescription());
+//	    model.addAttribute("crops", cropService.findAllCrops());
+//	    return "cropmanage";
+//	}
 	
 	@PostMapping("/addlivestock")
-	public String addLivestock(@Valid @ModelAttribute Livestock livestock,@PathVariable Long id,
+	public String addLivestock(@Valid @ModelAttribute Livestock livestock,
 			BindingResult result, Model model) {
 
 		if(result.hasErrors()){
 			return "addlivestock";
 		}
+//		Livestock existing = livestockService.findLivestockByName(livestock.getName());
+//		if(livestockService.exists(existing.getId()))
         livestockService.save(livestock);
 	    model.addAttribute("livestocks", livestockService.findAllLivestocks());
 	    return "cropmanage";
@@ -123,9 +125,9 @@ public class CropController {
 	    otherlivestock.setFirstPay(livestock.getFirstPay());
 	    otherlivestock.setSecondPay(livestock.getSecondPay());
 	    otherlivestock.setThirdPay(livestock.getThirdPay());
-	    otherlivestock.setPeriodOfGrowth(livestock.getPeriodOfGrowth());
+	    //otherlivestock.setInterval(livestock.getInterval());
 	    otherlivestock.setDescription(livestock.getDescription());
-	    model.addAttribute("livestocks", cropService.findAllCrops());
+	    model.addAttribute("livestocks", livestockService.findAllLivestocks());
 	    return "cropmanage";
 	}
 	

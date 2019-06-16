@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.myapps.plantwithmind.validation.PasswordMatch;
 
 @Entity
 @Table(name="user")

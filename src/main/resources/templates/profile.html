@@ -38,6 +38,7 @@ xmlns:th="http://www.thymeleaf.org">
 	<div class="container py-md-3">
     <div class="row" style="margin: 0px;">
 
+
     <div class="col-md-6 ">
         <div class="card my-5">
             <div class="row" style="margin: 0px;">
@@ -65,9 +66,6 @@ xmlns:th="http://www.thymeleaf.org">
                 <div class="row mt-5">
                     <div class="col-sm-12">
                         <div class="col-sm-12  ">
-
-
-
                             <table class="table table-hover ">
                                 <thead class="grey-text">
                                     <tr  >
@@ -167,7 +165,7 @@ xmlns:th="http://www.thymeleaf.org">
     <td th:text="${duepay.amount}" />
     <td><form >
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <button type="button" id="hey" class="btnPayNow" data-email="${user.email}" data-mobile="${user.phonenumber}" data-amount="${duepay.amount}"
+  <button type="button" id="hey" class="btnPayNow" data-email="${email}" data-mobile="${user.phonenumber}" data-amount="${duepay.amount}"
    onclick="payWithPaystack()"> Pay </button> 
 </form>
     </td>
@@ -190,7 +188,7 @@ xmlns:th="http://www.thymeleaf.org">
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/main.js"></script>
 
-         <script type="text/javascript">
+         <script type="text/javascript"  th:inline="javascript">
          
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -202,20 +200,26 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 
-//var data-email = [[${email}]];
+//var data-email;
+
+var userEmail = [[${user.email}]];
+//var userPhone = [[${phone}]];
+//var userEmail = [[${email}]];
+//var data-email = $(input).attr("id");
+
   function payWithPaystack(){
-	  //alert(data-email);
+	  alert(userEmail);
     var handler = PaystackPop.setup({
       key: 'pk_test_3ff500ca3f03fe6b46b53d7a279a56e78264b766',
-      email: 'abassadeyemi1@gmail.com',
-      amount: 1000,
+      email: [[${user.email}]],
+      amount: [[${duepay.amount}]]+"00",
       currency: "NGN",
       metadata: {
          custom_fields: [
             {
                 display_name: "Mobile Number",
                 variable_name: "mobile_number",
-                value: "+2348012345678"
+                value: [[${user.phonenumber}]]
             }
          ]
       },
@@ -223,7 +227,6 @@ s0.parentNode.insertBefore(s1,s0);
           alert('success. transaction ref is ' + response.reference);
       },
       onClose: function(){
-          alert('window closed');
       }
     });
     handler.openIframe();

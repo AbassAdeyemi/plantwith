@@ -36,6 +36,8 @@ public class Payment {
 	@JoinColumn(name="user_id",nullable = false)
 	private SiteUser user;
 	
+	private String paymentRef;
+	
     @CreatedDate
 	private Date creationDate;
 		
@@ -44,6 +46,19 @@ public class Payment {
 	public Payment(String amount) {
 		
 		this.amount = amount;
+	}
+	
+	public Payment(Long id, String amount, boolean paid, int paymentFlag,
+			Livestock livestock, SiteUser user, String paymentRef,
+			Date creationDate) {
+		this.id = id;
+		this.amount = amount;
+		this.paid = paid;
+		this.paymentFlag = paymentFlag;
+		this.livestock = livestock;
+		this.user = user;
+		this.paymentRef = paymentRef;
+		this.creationDate = creationDate;
 	}
 	public String getAmount() {
 		return amount;
@@ -87,6 +102,12 @@ public class Payment {
 	}
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+	public String getPaymentRef() {
+		return paymentRef;
+	}
+	public void setPaymentRef(String paymentRef) {
+		this.paymentRef = paymentRef;
 	}
 	
 	

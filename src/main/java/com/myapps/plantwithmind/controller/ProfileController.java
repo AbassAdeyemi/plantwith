@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,17 +62,16 @@ public class ProfileController {
 	public String showLivestock(@PathVariable String anylivestock,Model model){
 		System.out.println(">>>>>>>>>>>>>>>>"+anylivestock);
 		SiteUser user = getUser();
-		Livestock livestock = new Livestock(anylivestock);
-		if(user == null){
-		 livestock = livestockService.findLivestockByName(anylivestock);
-		if(livestock == null){
-			livestock = new Livestock(anylivestock);
-			livestockService.save(livestock);
-		}
-		}
-		else if(livestockService.findLivestockByUser(user) != null){
+		Livestock livestock = null;
+		if(user != null && livestockService.findLivestockByUser(user) != null){
 			livestock = livestockService.findLivestockByUser(user);
 		}
+		 else{
+			 livestock = livestockService.findLivestockByName(anylivestock);
+			 if(livestock == null){
+					livestock = new Livestock(anylivestock);
+				}
+		 }
 		livestock.setFirstPay("100000");
 		livestock.setSecondPay("100000");
 		livestock.setThirdPay("100000");
@@ -120,11 +120,12 @@ public class ProfileController {
 //		return "profile";
 //	}
 	  @GetMapping(value = "/profile")
-      private String showProfile(Model model) {
+      private String showProfile(Model model,HttpSession session) {
 		SiteUser user = getUser();
 		List<Payment> payments = new ArrayList<>();
-		Payment payment = new Payment();
-		Payment duepay = new Payment();
+		Payment payment = null;
+		Payment duepay = null;
+		Livestock livestock = null;
 		if(user == null) {
 			return "redirect:/";
 		}
@@ -135,7 +136,7 @@ public class ProfileController {
 			profileService.save(profile);
 		}
 		
-		 Livestock livestock = livestockService.findLivestockByUser(user);
+		  livestock = livestockService.findLivestockByUser(user);
 		    if(livestock!= null){
 		    	payments = paymentService.getPaymentByUserByLivestock(user.getId(),livestock);
 		    	if(!payments.isEmpty()){
@@ -143,12 +144,14 @@ public class ProfileController {
 		    		duepay = getDuePay(payment,livestock);
 		    	}
 		    	else{
-		    		duepay.setAmount(livestock.getFirstPay());
+		    		duepay = (Payment)session.getAttribute("duepay");
 		    	}
+		    	
 		    }
 		List<SiteUser> iteratedUser = (List)userService.findAll();
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+iteratedUser.size());
 		model.addAttribute("email", user.getEmail());
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+ user.getEmail());
 		model.addAttribute("user",user);
 		model.addAttribute("duepay",duepay);
 		model.addAttribute("livestock",livestock);
@@ -158,7 +161,7 @@ public class ProfileController {
 	
 
 	@GetMapping(value="/bookcrop/{id}")
-	public String savePackage(@PathVariable long id,Model model) {
+	public String savePackage(@PathVariable long id,Model model,HttpSession session) {
 		List<Payment> payments = new ArrayList<>();
 		Payment payment = new Payment();
 		Payment duepay = new Payment();
@@ -171,16 +174,18 @@ public class ProfileController {
 	    		payment = paymentService.getLastPayment(user.getId(),livestock);
 	    		duepay = getDuePay(payment,livestock);
 	    	}
-	    	else{
-	    		duepay.setAmount(livestock.getFirstPay());
-	    	}
 	    }
 	    else{
     		livestock = new Livestock(livestockService.findLivestockById(id).get().getName());
+    		livestock.setFirstPay(livestockService.findLivestockById(id).get().getFirstPay());
+    		livestock.setSecondPay(livestockService.findLivestockById(id).get().getSecondPay());
+    		livestock.setThirdPay(livestockService.findLivestockById(id).get().getThirdPay());
     		livestock.setUser(user);
     		livestockService.save(livestock);
     	}
-  
+	    if(payments.isEmpty())
+	    	duepay.setAmount(livestock.getFirstPay());
+        session.setAttribute("duepay",duepay);
 		Profile profile = profileService.getUserProfile(user);
     	model.addAttribute("livestock",livestock);
         model.addAttribute("user",user);

@@ -10,14 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name="livestock")
 public class Livestock {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String name;
 	
 	private Date startDate;
@@ -35,13 +39,16 @@ public class Livestock {
 	@Lob
 	private String description;
 	
+
 	private String firstPay;
+	
 	
 	private String secondPay;
 	
+	
 	private String thirdPay;
 	
-	private String periodOfGrowth;
+	private int payInterval;
 	
        public Livestock(){
 		
@@ -116,12 +123,12 @@ public class Livestock {
 		this.thirdPay = thirdPay;
 	}
 
-	public String getPeriodOfGrowth() {
-		return periodOfGrowth;
+	public int getPayInterval() {
+		return payInterval;
 	}
 
-	public void setPeriodOfGrowth(String periodOfGrowth) {
-		this.periodOfGrowth = periodOfGrowth;
+	public void setPayInterval(int payInterval) {
+		this.payInterval = payInterval;
 	}
 
 	public Byte[] getImage() {

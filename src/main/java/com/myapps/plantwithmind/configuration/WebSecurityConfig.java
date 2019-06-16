@@ -49,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		            		       "/update/**",
 		            		       "/managelivestock",
 		            		       "/addcrop",
+		            		       "/addlivestock",
 		            		       "/showaddcrop",
 		            		       "/showaddlivestock",
 		            		       "/editcrop/**",

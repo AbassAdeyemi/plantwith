@@ -35,7 +35,11 @@ public class LivestockService {
 	}
 
 	public void delete(Livestock livestock) {
-		livestockRepo.delete(livestock);
+		livestockRepo.delete(livestock);		
+	}
+	
+	public boolean exists(Long id) {
+		return livestockRepo.existsById(id);
 		
 	}
 }
