@@ -76,7 +76,7 @@ xmlns:th="http://www.thymeleaf.org">
                                 <tbody>
                                     <tr>
                                         <td class="font-weight-bold">Signed in as:</td>
-                                        <td class=""><span class="float-right" th:text=${email}></span></td>
+                                        <td class=""><span class="float-right" th:text=${user.email}></span></td>
                                     </tr>
                                    
                                     <tr>
@@ -203,6 +203,7 @@ s0.parentNode.insertBefore(s1,s0);
 //var data-email;
 
 var userEmail = [[${user.email}]];
+var amount = [[${duepay.amount}]];
 //var userPhone = [[${phone}]];
 //var userEmail = [[${email}]];
 //var data-email = $(input).attr("id");
@@ -224,13 +225,19 @@ var userEmail = [[${user.email}]];
          ]
       },
       callback: function(response){
-          alert('success. transaction ref is ' + response.reference);
+          var url='recordpay';
+          var ref= response.reference;
+          alert(ref);
+          $.post(url, {ref: ref,amount:amount},function(){
+        	  alert('success. transaction ref is ' +ref);
+          });
       },
       onClose: function(){
       }
     });
     handler.openIframe();
   }
+  
 </script>
     </body>
 </html>

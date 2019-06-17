@@ -73,8 +73,8 @@ public class ProfileController {
 				}
 		 }
 		livestock.setFirstPay("100000");
-		livestock.setSecondPay("100000");
-		livestock.setThirdPay("100000");
+		livestock.setSecondPay("50000");
+		livestock.setThirdPay("70000");
 		livestockService.save(livestock);
 		model.addAttribute("livestock",livestock);
 		return anylivestock;
@@ -196,6 +196,17 @@ public class ProfileController {
      
 	}
 	
+	@PostMapping(value="/recordpay")
+	public void recordPayment(@RequestParam("ref") String ref,
+			                   @RequestParam("amount")String amount){
+		
+		SiteUser user = getUser();
+		Livestock livestock = livestockService.findLivestockByUser(user);
+		Payment payment = new Payment(amount,livestock,user,ref);
+		payment.setPaymentFlag(payment.getPaymentFlag()+1);
+		paymentService.save(payment);
+	}
+	
     public Payment getDuePay(Payment payment,Livestock livestock){
     	if(payment.getPaymentFlag() == 0){
     		payment.setAmount(livestock.getFirstPay());
@@ -205,6 +216,9 @@ public class ProfileController {
     	}
     	else if(payment.getPaymentFlag() == 2){
     		payment.setAmount(livestock.getThirdPay());
+    	}
+    	else if(payment.getPaymentFlag() == 3){
+    		payment.setPaid(true);
     	}
     	return payment;
     }

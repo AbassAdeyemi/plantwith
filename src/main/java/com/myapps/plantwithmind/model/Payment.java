@@ -25,7 +25,7 @@ public class Payment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String amount;
-	private boolean paid;
+	private boolean paid = false;
 	private int paymentFlag=0;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -48,6 +48,14 @@ public class Payment {
 		this.amount = amount;
 	}
 	
+	
+	public Payment(String amount, Livestock livestock, SiteUser user,
+			String paymentRef) {
+		this.amount = amount;
+		this.livestock = livestock;
+		this.user = user;
+		this.paymentRef = paymentRef;
+	}
 	public Payment(Long id, String amount, boolean paid, int paymentFlag,
 			Livestock livestock, SiteUser user, String paymentRef,
 			Date creationDate) {
@@ -59,6 +67,14 @@ public class Payment {
 		this.user = user;
 		this.paymentRef = paymentRef;
 		this.creationDate = creationDate;
+	}
+	
+	
+	public Payment(String amount, Livestock livestock, SiteUser user) {
+		super();
+		this.amount = amount;
+		this.livestock = livestock;
+		this.user = user;
 	}
 	public String getAmount() {
 		return amount;
