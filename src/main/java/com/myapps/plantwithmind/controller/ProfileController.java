@@ -197,14 +197,17 @@ public class ProfileController {
 	}
 	
 	@PostMapping(value="/recordpay")
-	public void recordPayment(@RequestParam("ref") String ref,
-			                   @RequestParam("amount")String amount){
-		
+	public String recordPayment(@RequestParam("ref") String ref,
+			                   @RequestParam("amount")String amount,Model model){
+		Payment duepay = null;
 		SiteUser user = getUser();
 		Livestock livestock = livestockService.findLivestockByUser(user);
 		Payment payment = new Payment(amount,livestock,user,ref);
 		payment.setPaymentFlag(payment.getPaymentFlag()+1);
 		paymentService.save(payment);
+		duepay = getDuePay(paymentService.getLastPayment(user.getId(),livestock),livestock);
+		model.addAttribute("duepay",duepay);
+		return "profile::#duepayment";
 	}
 	
     public Payment getDuePay(Payment payment,Livestock livestock){
