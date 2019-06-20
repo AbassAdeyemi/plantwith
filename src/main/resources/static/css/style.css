@@ -1,4 +1,8 @@
 @CHARSET "ISO-8859-1";
+.message {
+    font-size: larger;
+    margin-top: 50px;
+}
 .nav-link{
 	margin-right: 1em;
 }
@@ -9,8 +13,8 @@
 	justify-content: flex-end;
 }
 .img-2 {
- width:500;
- height:500;
+ width:500px;
+ height:500px;
 }
 .profileGreen{
     background-color: #00994C!important;
