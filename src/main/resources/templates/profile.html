@@ -165,7 +165,7 @@ xmlns:th="http://www.thymeleaf.org">
     <td th:text="${duepay.amount}" />
     <td><form >
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <button type="button" id="hey" class="btnPayNow" data-email="${email}" data-mobile="${user.phonenumber}" data-amount="${duepay.amount}"
+  <button type="button" id="hey" class="btnPayNow"
    onclick="payWithPaystack()"> Pay </button> 
 </form>
     </td>
@@ -228,12 +228,12 @@ var amount = [[${duepay.amount}]];
           var url='recordpay';
           var ref= response.reference;
           alert(ref);
-          $.post(url, {ref:ref,amount:amount},function(){
-        	  alert('success. transaction ref is ' +ref);
-          }).done(function(result){
-        	$("#duepayment").replaceWith(result)
-        	  });
-      },
+          $.post(url, {ref:ref,amount:amount}).done(function(result) {
+        	    alert( "Data Loaded: " + result );
+          }).fail(function(error,status){
+        	  alert("Hello");
+          });
+      },   
       onClose: function(){
       }
     });

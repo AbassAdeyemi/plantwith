@@ -1,5 +1,7 @@
 package com.myapps.plantwithmind.model;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -33,10 +35,6 @@ public class Livestock {
 	private SiteUser user;
 	
 	@Lob
-	@Column(name = "image", columnDefinition="BLOB")
-	private Byte[] image;
-	
-	@Lob
 	private String description;
 	
 
@@ -49,6 +47,15 @@ public class Livestock {
 	private String thirdPay;
 	
 	private int payInterval;
+	
+	@Column(name="photo_directory",length=10)
+	private String photoDirectory;
+	
+	@Column(name="photo_name",length=10)
+	private String photoName;
+	
+	@Column(name="photo_extension",length=5)
+	private String photoExtension;
 	
        public Livestock(){
 		
@@ -131,14 +138,6 @@ public class Livestock {
 		this.payInterval = payInterval;
 	}
 
-	public Byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(Byte[] image) {
-		this.image = image;
-	}
-
 	public SiteUser getUser() {
 		return user;
 	}
@@ -146,6 +145,46 @@ public class Livestock {
 	public void setUser(SiteUser user) {
 		this.user = user;
 	}
+
+	public String getPhotoDirectory() {
+		return photoDirectory;
+	}
+
+	public void setPhotoDirectory(String photoDirectory) {
+		this.photoDirectory = photoDirectory;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
+	}
+
+	public String getPhotoExtension() {
+		return photoExtension;
+	}
+
+	public void setPhotoDetails(FileInfo info){
+		photoDirectory= info.getSubDirectory();
+		photoName= info.getBasename();
+		photoExtension= info.getExtension();
+	}
+	
+	public Path getPhoto(String baseDirectory) {
+		if(photoName == null) {
+			return null;
+		}
+		
+		return Paths.get(baseDirectory, photoDirectory, photoName + "." +  photoExtension);
+	}
+	
+	public void setPhotoExtension(String photoExtension) {
+		this.photoExtension = photoExtension;
+	}
+	
+	
 	
 	
 	
