@@ -25,7 +25,6 @@ import com.myapps.plantwithmind.model.Crop;
 import com.myapps.plantwithmind.model.Livestock;
 import com.myapps.plantwithmind.model.SiteUser;
 import com.myapps.plantwithmind.service.CropService;
-import com.myapps.plantwithmind.service.ImageService;
 import com.myapps.plantwithmind.service.LivestockService;
 
 @Controller
@@ -36,8 +35,8 @@ public class CropController {
 	@Autowired
 	private LivestockService livestockService;
 
-	@Autowired
-	private ImageService imageService;
+//	@Autowired
+//	private ImageService imageService;
 	
 //	@PostMapping("/addcrop")
 //	public String addCrop(@ModelAttribute Crop crop, 
@@ -84,32 +83,32 @@ public class CropController {
 		return "showuploadform";
 	}
 	
-	@PostMapping("/livestockimage/{id}")
-    public String handleImagePost(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
-
-        imageService.saveImageFile(id, file);
-
-        return "redirect:addlivestock";
-    }
+//	@PostMapping("/livestockimage/{id}")
+//    public String handleImagePost(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+//
+//        imageService.saveImageFile(id, file);
+//
+//        return "redirect:addlivestock";
+//    }
 	
-	 @GetMapping("renderimage/{id}")
-	    public void renderImageFromDB(@PathVariable Long id, HttpServletResponse response) throws IOException {
-		 Livestock livestock = livestockService.findLivestockById(id)
-			      .orElseThrow(() -> new IllegalArgumentException("Invalid livestock Id:" + id));
-
-	        if (livestock.getImage() != null) {
-	            byte[] byteArray = new byte[livestock.getImage().length];
-	            int i = 0;
-
-	            for (Byte wrappedByte : livestock.getImage()){
-	                byteArray[i++] = wrappedByte; 
-	            }
-
-	            response.setContentType("image/jpg");
-	            InputStream is = new ByteArrayInputStream(byteArray);
-	            IOUtils.copy(is, response.getOutputStream());
-	        }
-	    }
+//	 @GetMapping("renderimage/{id}")
+//	    public void renderImageFromDB(@PathVariable Long id, HttpServletResponse response) throws IOException {
+//		 Livestock livestock = livestockService.findLivestockById(id)
+//			      .orElseThrow(() -> new IllegalArgumentException("Invalid livestock Id:" + id));
+//
+//	        if (livestock.getImage() != null) {
+//	            byte[] byteArray = new byte[livestock.getImage().length];
+//	            int i = 0;
+//
+//	            for (Byte wrappedByte : livestock.getImage()){
+//	                byteArray[i++] = wrappedByte; 
+//	            }
+//
+//	            response.setContentType("image/jpg");
+//	            InputStream is = new ByteArrayInputStream(byteArray);
+//	            IOUtils.copy(is, response.getOutputStream());
+//	        }
+//	    }
 	 
 	@PostMapping("/updatelivestock/{id}")
 	public String updateLivestock(@Valid @ModelAttribute Livestock livestock,@PathVariable("id") Long id,

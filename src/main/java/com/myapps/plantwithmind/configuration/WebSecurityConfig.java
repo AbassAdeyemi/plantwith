@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		            		       "/h2-console/**",
 		            		       "/crops",
 		            		       "/crops/**",
+		            		       "/livestocks/**",
 		            		       "/about"
 		            		       )
 		              .permitAll()
@@ -57,8 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		            		       "/bookcrop/**",
 		            		       "renderimage/{id}",
 		            		       "/cropimage/**",
-		            		       "/livestockimage/**",
-		            		       "/livestocks/**")
+		            		       "/livestockimage/**"
+		            		       )
 		                .authenticated()
 		                .anyRequest()
 		                .denyAll()

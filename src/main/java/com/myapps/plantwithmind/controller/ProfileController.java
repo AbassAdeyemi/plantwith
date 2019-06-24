@@ -65,6 +65,7 @@ public class ProfileController {
 		Livestock livestock = null;
 		if(user != null && livestockService.findLivestockByUser(user) != null){
 			livestock = livestockService.findLivestockByUser(user);
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+livestock.getName());
 		}
 		 else{
 			 livestock = livestockService.findLivestockByName(anylivestock);
@@ -124,11 +125,11 @@ public class ProfileController {
 		SiteUser user = getUser();
 		List<Payment> payments = new ArrayList<>();
 		Payment payment = null;
-		Payment duepay = null;
+		Payment duepay = new Payment();
 		Livestock livestock = null;
-		if(user == null) {
+		if(user == null) 
 			return "redirect:/";
-		}
+		
 		Profile profile = profileService.getUserProfile(user);
 		if (profile == null) {
 			profile = new Profile();
@@ -137,14 +138,14 @@ public class ProfileController {
 		}
 		
 		  livestock = livestockService.findLivestockByUser(user);
+		  System.out.println(livestock.getName());
 		    if(livestock!= null){
-		    	payments = paymentService.getPaymentByUserByLivestock(user.getId(),livestock);
-		    	if(!payments.isEmpty()){
+		    	if(!payments.isEmpty()&& paymentService.getPaymentByUserByLivestock(user.getId(),livestock)!=null){
 		    		payment = paymentService.getLastPayment(user.getId(),livestock);
 		    		duepay = getDuePay(payment,livestock);
 		    	}
 		    	else{
-		    		duepay = (Payment)session.getAttribute("duepay");
+		    		duepay.setAmount(livestock.getFirstPay());
 		    	}
 		    	
 		    }
@@ -185,7 +186,7 @@ public class ProfileController {
     	}
 	    if(payments.isEmpty())
 	    	duepay.setAmount(livestock.getFirstPay());
-        session.setAttribute("duepay",duepay);
+        //session.setAttribute("duepay",duepay);
 		Profile profile = profileService.getUserProfile(user);
     	model.addAttribute("livestock",livestock);
         model.addAttribute("user",user);
@@ -196,18 +197,22 @@ public class ProfileController {
      
 	}
 	
+	@ResponseBody
 	@PostMapping(value="/recordpay")
-	public String recordPayment(@RequestParam("ref") String ref,
-			                   @RequestParam("amount")String amount,Model model){
+	public String recordPayment(HttpServletRequest request,Model model){
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> i got here");
 		Payment duepay = null;
 		SiteUser user = getUser();
+		String amount = (String)request.getAttribute("amount");
+		String ref = (String)request.getAttribute("ref");
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+ref);
 		Livestock livestock = livestockService.findLivestockByUser(user);
 		Payment payment = new Payment(amount,livestock,user,ref);
 		payment.setPaymentFlag(payment.getPaymentFlag()+1);
 		paymentService.save(payment);
 		duepay = getDuePay(paymentService.getLastPayment(user.getId(),livestock),livestock);
 		model.addAttribute("duepay",duepay);
-		return "profile::#duepayment";
+		return "00";
 	}
 	
     public Payment getDuePay(Payment payment,Livestock livestock){

@@ -2580,6 +2580,10 @@ a.move-top span{
 		font-size: 15px;
 		padding: 10px 20px;
 	}
+	.message {
+	font-size: larger;
+	margin-top: 50px;
+}
 	#logo a {
 		letter-spacing: 0;
 	}
